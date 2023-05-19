@@ -33,14 +33,15 @@ public class OrderBook {
 
     public long remove(long orderId) {
         if (orderMap.containsKey(orderId) && orderMap.get(orderId) != null) {
-            Order order = orderMap.remove(orderMap.get(orderId));
-            TreeMap<Double, PriorityQueue<Order>> treeMap = order.getSide() == 'B' ? bids : offers;
-            PriorityQueue<Order> orders = treeMap.get(order.getPrice());
+            Order removedOrder = orderMap.get(orderId);
+            orderMap.remove(removedOrder);
+            TreeMap<Double, PriorityQueue<Order>> treeMap = removedOrder.getSide() == 'B' ? bids : offers;
+            PriorityQueue<Order> orders = treeMap.get(removedOrder.getPrice());
 
-            orders.remove(order);
+            orders.remove(removedOrder);
 
             if (orders.isEmpty()) {
-                orderMap.remove(order.getPrice());
+                orderMap.remove(removedOrder.getPrice());
             }
 
         }

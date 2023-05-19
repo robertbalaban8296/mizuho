@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 
 /** Suggestions for improvement:
  * - I would create an interface, define the methods there and implement the interface in this class
- * - Usage of high efficient data structures
- * - Adding support for concurrency and multithreading for the methods
+ * - Usage of high efficient data structures (PriorityBlockingQueue)
+ * - Adding support for concurrency and multithreading for the methods. If the application was called
+ * from multiple threads, I would replace the PriorityQueue with PriorityBlockingQueue and the orderMap I would replace
+ * with a ConcurrentHashMap in order to achieve thread safety.
  * */
 public class OrderBook {
 
